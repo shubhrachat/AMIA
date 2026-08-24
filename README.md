@@ -1,7 +1,7 @@
 # AMIA
 
 ```mermaid
-graph LR
+graph BU
     A[AI Mobile/Web App] -->|1. Sends User Request| B[API Gateway / Load Balancer]
     B -->|2. Routes Traffic| C[Auth & Rate Limiting Service]
     C -->|3. Validates Token| D[Distributed Backend Microservices]
