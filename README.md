@@ -1,5 +1,5 @@
 ```mermaid
-graph TD 
+graph LR
 A[AMIA Streamlit UI] -->|1. Sends User Query and selected Agent Pipeline|B[Orchestrator] 
 
 %% Check and invoke the correct pipeline %%
