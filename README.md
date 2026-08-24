@@ -1,4 +1,6 @@
 # AMIA
+
+```mermaid
 graph TD
     A[AI Mobile/Web App] -->|1. Sends User Request| B[API Gateway / Load Balancer]
     B -->|2. Routes Traffic| C[Auth & Rate Limiting Service]
@@ -7,3 +9,4 @@ graph TD
     E -->|5. Triggers Processing| F[AI Inference Cluster / GPU Workers]
     F -->|6. Saves Outputs| G[(Distributed Database / Vector DB)]
     G -.->|7. Returns Response| A
+```
