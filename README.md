@@ -1,12 +1,24 @@
 # AMIA
 
-```mermaid
-graph TD
-    A[AI Mobile/Web App] -->|1. Sends User Request| B[API Gateway / Load Balancer]
-    B -->|2. Routes Traffic| C[Auth & Rate Limiting Service]
-    C -->|3. Validates Token| D[Distributed Backend Microservices]
-    D -->|4. Async Job Queue| E[(Message Broker: Kafka/RabbitMQ)]
-    E -->|5. Triggers Processing| F[AI Inference Cluster / GPU Workers]
-    F -->|6. Saves Outputs| G[(Distributed Database / Vector DB)]
-    G -.->|7. Returns Response| A
+```mermaid graph TD 
+
+A[AMIA Streamlit UI] -->|1. Sends User Query and selected Agent Pipeline| B[Orchestrator]
+
+%% Check and invoke the correct pipeline %%
+B—> C {Single<br/>Agent?}
+
+%% Single Agent Pipeline %%
+C—> |3. Yes: Query LLM for SWOT theme in User Query| D [Ollama]
+D—>|4. Return Identified theme | B
+
+B—>|5. Look up vector db with User Query and theme| E[(Chroma DB)]
+
+E—>|6. Return chunks| B
+
+B—>|7. Query LLM with User Query and RAG Context| D
+
+D—>|8. Return Response|  A
+
+
+
 ```
