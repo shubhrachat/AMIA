@@ -70,17 +70,17 @@ I went through multiple cycles of test and improvements to optimise the RAG pipe
 I tried different techniques like using query prefixes, re-rankers on top of query prefixes, cross-encoders, and HyDELite with LLM based re-ranker. 
 Query prefixes/re-rankers and cross-encoders did not help at all. HydeLite with LLM based ranking offered some improvement but not enough. All of this pointed to incorrect chunking. To address this: 
 
-1. I optimized the vector database using Hierarchical chunking, careful choice of parent and child chunk sizes/overlaps, and very importantly, adding theme based metadata to the chunks during database ingestion. During query of the database, themes extracted from the prompt were added to the user query. These changes dramatically improved the quality of the lookup and that of the final response. Here is the paper where I have documented my experiments with the different vector database ingestion and retrieval techniques.
+- I optimized the vector database using Hierarchical chunking, careful choice of parent and child chunk sizes/overlaps, and very importantly, adding theme based metadata to the chunks during database ingestion. During query of the database, themes extracted from the prompt were added to the user query. These changes dramatically improved the quality of the lookup and that of the final response. Here is the paper where I have documented my experiments with the different vector database ingestion and retrieval techniques.
    
-2. Extracting the right themes using the LLM, during ingestion as well as user query, needed iterative improvements of the prompts. I learned the basics of prompt engineering and incorporated the techniques to optimise theme generation. Another key decision was to use parent chunks for theme generation and populating child chunks with those themes.
+- Extracting the right themes using the LLM, during ingestion as well as user query, needed iterative improvements of the prompts. I learned the basics of prompt engineering and incorporated the techniques to optimise theme generation. Another key decision was to use parent chunks for theme generation and populating child chunks with those themes.
 
 **System Infrastructure**
 AMIA features a clean separation of different functional components within its design. However, it is not built as a true distributed service. 
 Orchestration is provided by LangChain, and to a lesser extent, by the conversational chat interface provided by Ollama Python libraries.
 
 Future work would involve:
-1. Separating the functional components - like the agents and LLM functions - into micro services. 
-2. Implementing rate-limiting, authentication, and authorisation using Streamlit.
+- Separating the functional components - like the agents and LLM functions - into micro services.
+- Implementing rate-limiting, authentication, and authorisation using Streamlit.
 Exposing a public endpoint for AMIA. 
 
 **Engineering Impact **
