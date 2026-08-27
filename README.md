@@ -1,8 +1,8 @@
 ### **Case Study: AMIA (AI Market Intelligence Analyst)**
 
-#### AMIA is an autonomous “Agentic AI Financial Analyst” optimised for the technology sector. It provides corporate SWOT analysis and competitive market intelligence by synthesizing  regulatory filings with real-time web telemetry.
+AMIA is an autonomous “Agentic AI Financial Analyst” optimised for the technology sector. It provides corporate SWOT analysis and competitive market intelligence by synthesizing  regulatory filings with real-time web telemetry.
 
-**Architecture and Tech Stack**
+#### **Architecture and Tech Stack**
 
 System Architecture AMIA utilizes an “Orchestrator pattern” to manage context assembly and route execution dynamically based on selected agent workflows. The following diagram illustrates the system architecture.
 
