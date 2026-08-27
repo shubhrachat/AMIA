@@ -2,7 +2,7 @@
 
 AMIA is an autonomous “Agentic AI Financial Analyst” optimised for the technology sector. It provides corporate SWOT analysis and competitive market intelligence by synthesizing  regulatory filings with real-time web telemetry.
 
-### **Architecture and Tech Stack**
+#### **Architecture and Tech Stack**
 
 System Architecture AMIA utilizes an “Orchestrator pattern” to manage context assembly and route execution dynamically based on selected agent workflows. The following diagram illustrates the system architecture.
 
@@ -29,11 +29,11 @@ B-->|12. Query LLM with User Query, RAG Context, Live Data|D
 
 ```
 
-**Tech Stack **
+**Tech Stack**
 
 Python, LangChain, Ollama, ChromaDB, Model Context Protocol (MCP), StreamLit, BGE-M3 embedding
 
-**Application Layer**
+#### **Application Layer**
 
 Core Model/Backend  AMIA uses the Llama3.1 (8B) model from Ollama. It is built with 2 agents. 
 
@@ -47,7 +47,7 @@ Core Model/Backend  AMIA uses the Llama3.1 (8B) model from Ollama. It is built
    
 The choice of tools, particularly the LLM model and DuckDuckGo, was dictated by the requirement to run everything on my Apple laptop (M4, 16 GB) without the need for paid APIs on the Cloud.
 
-**UI/Frontend**  
+#### **UI/Frontend**  
 
 AMIA uses Streamlit to implement an interactive front-end that takes user queries and displays responses from the backend. It provides features like a choice of agent pipelines, viewing matching chunks from the RAG pipeline, persistence of responses, and a knob to download the responses.
 
@@ -63,7 +63,7 @@ Employs a Chunking Strategy that uses Hierarchical (Parent-Child) Chunking and m
 
 Employs a simpler chunking strategy for the RAG agent, without Hierarchical Chunking and metadata. Uses a second agent to lookup recent and live data from the web.   When a user query is received at the Streamlit frontend, it passes it unmodified to the agent pipeline in the back.  This query is embedded to look up ChromaDB.  In parallel, the query is fed to the second agent, which uses an MCP client to connect to the MCP server of a DuckDuckGo based web scraping tool.  The responses from the vector database lookup and the web lookup are combined, using Ollama’s message based chat interface, to look up the LLM. The response is then fed back to the UI. 
 
-**Optimization and R&D Iterations**
+#### **Optimization and R&D Iterations**
 
 RAG pipeline/Chunking Strategy
 I went through multiple cycles of test and improvements to optimise the RAG pipeline. Initially, the chunks returned by the vector database exhibited high token-match bias, with generic boiler-plate statements dominating the output. 
@@ -89,7 +89,7 @@ Exposing a public endpoint for AMIA. 
 
 Implemented an effective and extensible market intelligence tool from first principles. Accuracy is achieved by a nuanced chunking strategy and fine-tuned prompts. AMIA can easily be extended for SWOT analysis of additional companies by incorporating 10-Q and 10-K data from these companies into the RAG pipeline.
 
-**Key Takeaways**
+#### **Key Takeaways**
 
 I have 3 key takeaways from this project.
 
