@@ -102,3 +102,10 @@ I have 3 key takeaways from this project.
 
 
 **Source Code:** [AMIA_SourceCode](https://github.com/shubhrachat/AMIA_SourceCode) *(Access Restricted)*
+
+## Copyright & Licensing
+
+Copyright © 2026 Shubhra Chatterjee. All rights reserved.
+
+The text files, papers, and essays in this repository are the intellectual property of the author. No part of this work may be reproduced, distributed, or transmitted in any form or by any means without prior written permission.
+
