@@ -70,7 +70,9 @@ I went through multiple cycles of test and improvements to optimise the RAG pipe
 I tried different techniques like using query prefixes, re-rankers on top of query prefixes, cross-encoders, and HyDELite with LLM based re-ranker. 
 Query prefixes/re-rankers and cross-encoders did not help at all. HydeLite with LLM based ranking offered some improvement but not enough. All of this pointed to incorrect chunking. To address this: 
 
-- I optimized the vector database using Hierarchical chunking, careful choice of parent and child chunk sizes/overlaps, and very importantly, adding theme based metadata to the chunks during database ingestion. During query of the database, themes extracted from the prompt were added to the user query. These changes dramatically improved the quality of the lookup and that of the final response. Here is the paper where I have documented my experiments with the different vector database ingestion and retrieval techniques.
+- I optimized the vector database using Hierarchical chunking, careful choice of parent and child chunk sizes/overlaps, and very importantly, adding theme based metadata to the chunks during database ingestion. During query of the database, themes extracted from the prompt were added to the user query. These changes dramatically improved the quality of the lookup and that of the final response. 
+
+[Check out the paper where I have documented my experiments with the different vector database ingestion and retrieval techniques.](Rag_Pipeline_Optimisation.pdf)
    
 - Extracting the right themes using the LLM, during ingestion as well as user query, needed iterative improvements of the prompts. I learned the basics of prompt engineering and incorporated the techniques to optimise theme generation. Another key decision was to use parent chunks for theme generation and populating child chunks with those themes.
 
