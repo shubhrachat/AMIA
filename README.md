@@ -101,4 +101,4 @@ I have 3 key takeaways from this project.
 - **Extensible Design:** The core implementation of AMIA is completely de-coupled from input data about companies. By ingesting 10-K/10-Q data about new companies, AMIA can be easily extended to a much larger set of tech companies.  
 
 
-**Source Code:** [AMIA_SourceCode](../AMIA_SourceCode/) *(Access Restricted)*
+**Source Code:** [AMIA_SourceCode](https://github.com/shubhrachat/AMIA_SourceCode) *(Access Restricted)*
