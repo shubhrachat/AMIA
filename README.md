@@ -85,7 +85,7 @@ Exposing a public endpoint for AMIA. 
 
 **Engineering Impact **
 
-**Outcomes **
+**Outcomes**
 
 Implemented an effective and extensible market intelligence tool from first principles. Accuracy is achieved by a nuanced chunking strategy and fine-tuned prompts. AMIA can easily be extended for SWOT analysis of additional companies by incorporating 10-Q and 10-K data from these companies into the RAG pipeline.
 
@@ -93,10 +93,10 @@ Implemented an effective and extensible market intelligence tool from first prin
 
 I have 3 key takeaways from this project.
 
-**AI is only as good as the data and prompts it gets**: Clean, refined, domain-aware data and well structured prompts are mandatory for a performant AI. 
+- **AI is only as good as the data and prompts it gets**: Clean, refined, domain-aware data and well structured prompts are mandatory for a performant AI. 
 
-**Good AI applications can be built with smaller open-weights local models like Llama 3.1 8B.** Commercial APIs are not compulsory for smaller applications. 
+- **Good AI applications can be built with smaller open-weights local models like Llama 3.1 8B.** Commercial APIs are not compulsory for smaller applications. 
 
-**Extensible Design:** The core implementation of AMIA is completely de-coupled from input data about companies. By ingesting 10-K/10-Q data about new companies, AMIA can be easily extended to a much larger set of tech companies.  
+- **Extensible Design:** The core implementation of AMIA is completely de-coupled from input data about companies. By ingesting 10-K/10-Q data about new companies, AMIA can be easily extended to a much larger set of tech companies.  
 
 
