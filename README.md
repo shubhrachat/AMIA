@@ -1,4 +1,5 @@
 **Case Study: AMIA (AI Market Intelligence Analyst)**
+
 AMIA is an autonomous “Agentic AI Financial Analyst” optimised for the technology sector. It provides corporate SWOT analysis and competitive market intelligence by synthesizing  regulatory filings with real-time web telemetry.
 
 **Architecture and Tech Stack**
@@ -29,6 +30,7 @@ B-->|12. Query LLM with User Query, RAG Context, Live Data|D
 ```
 
 **Tech Stack **
+
 Python, LangChain, Ollama, ChromaDB, Model Context Protocol (MCP), StreamLit, BGE-M3 embedding
 
 **Application Layer**
@@ -39,7 +41,9 @@ The second agent improves the accuracy of the analysis using recent and live dat
  The LLM is then used to combine data from the two agents to provide a well-informed response to a user-query.  
 The choice of tools, particularly the LLM model and DuckDuckGo, was dictated by the requirement to run everything on my Apple laptop (M4, 16 GB) without the need for paid APIs on the Cloud.
 UI/Frontend  AMIA uses Streamlit to implement an interactive front-end that takes user queries and displays responses from the backend. It provides features like a choice of agent pipelines, viewing matching chunks from the RAG pipeline, persistence of responses, and a knob to download the responses.
-Data Pipelines 
+
+**Data Pipelines **
+
 AMIA offers two different agent pipelines.  
 Single Agent Pipeline using highly optimized RAG Employs a Chunking Strategy that uses Hierarchical (Parent-Child) Chunking and metadata insertion based on SWOT themes while generating the vector database (ChromaDB).   When a user query is received at the Streamlit frontend, it passes it unmodified to the agent pipeline in the back.  The backend queries the LLM to extract one or more SWOT themes from the user query.  The user query and the derived themes are then used to generate the embedding used to look up Chroma DB. The top 2 or 3 matching chunks are then passed to the LLM, along with the query.  The LLM response is fed back to the UI, displayed and persisted by the UI, which also provides a knob for the user to view the contents of the matching chunks.
 
@@ -56,14 +60,20 @@ Extracting the right themes using the LLM, during ingestion as well as user quer
 System Infrastructure
 AMIA features a clean separation of different functional components within its design. However, it is not built as a true distributed service. 
 Orchestration is provided by LangChain, and to a lesser extent, by the conversational chat interface provided by Ollama Python libraries.
+
 Future work would involve:
 Separating the functional components - like the agents and LLM functions - into micro services. 
 Implementing rate-limiting, authentication, and authorisation using Streamlit.
 Exposing a public endpoint for AMIA. 
-Engineering Impact 
-Outcomes  Implemented an effective and extensible market intelligence tool from first principles. Accuracy is achieved by a nuanced chunking strategy and fine-tuned prompts. AMIA can easily be extended for SWOT analysis of additional companies by incorporating 10-Q and 10-K data from these companies into the RAG pipeline.
 
-**Key Takeaways** 
+**Engineering Impact **
+
+**Outcomes  **
+
+Implemented an effective and extensible market intelligence tool from first principles. Accuracy is achieved by a nuanced chunking strategy and fine-tuned prompts. AMIA can easily be extended for SWOT analysis of additional companies by incorporating 10-Q and 10-K data from these companies into the RAG pipeline.
+
+**Key Takeaways**
+
 I have 3 key takeaways from this project.
 AI is only as good as the data and prompts it gets: Clean, refined, domain-aware data and well structured prompts are mandatory for a performant AI. 
 Good AI applications can be built with smaller open-weights local models like Llama 3.1 8B. Commercial APIs are not compulsory for smaller applications. 
